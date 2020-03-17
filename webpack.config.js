@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 module.exports = function (env, argv) {
   return {
     entry: {
@@ -62,7 +63,8 @@ module.exports = function (env, argv) {
     optimization: {
       splitChunks: {
         chunks: 'all',
-      }
+      },
+      minimizer: [new OptimizeCSSAssetsPlugin({})],
     }
   }
 };
