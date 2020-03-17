@@ -23,7 +23,8 @@
     "webpack-dev-server": "^3.10.3"
   },
   "scripts": {
-    "build": "webpack"
+    "start": "webpack --env.development",
+    "build": "webpack --env.production"
   },
   "keywords": [],
   "author": "",
