@@ -1,0 +1,155 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>test</title>
+</head>
+
+<body>
+    <div>
+        <button onclick="clipboard()">显示剪切内容</button>
+    </div>
+    <div class="copycontent"></div>
+    <img id="preview" />
+    <script>
+        function clipboard() {
+
+                navigator.clipboard.read().then(data => {
+                    let items;
+                    if (data.length > 0) {
+                        items = data[0];
+                    }
+                    console.log(items);
+                    for (let i = 0; i < items.types.length; i++) {
+                        if (items.types[i] != "text/plain") {
+                            let promise = items.getType("image/png").then(response => {
+                                var url = URL.createObjectURL(response);
+                                document.querySelector("#preview").src = url;
+                            })
+
+                        } else {
+                            let promise = items.getType("text/plain").then(response => {
+                                var reader = new FileReader();
+                                reader.onload = function (event) {
+                                    document.querySelector(".copycontent").innerHTML= event.target.result;
+                                    //document.querySelector(".cliptext").value = event.target.result;
+                                };
+                                var res = reader.readAsText(response);
+
+                            })
+
+                        }
+                    }
+                });
+            }
+    </script>
+</body> -->
+
+<html>
+
+<body>
+    <input type="text" oninput="onChange()" id='abc'>
+    <button onclick="onClick()">222</button>
+    <script type="text/javascript" src="./js/jquery-3.2.1.js"></script>
+    <script type="text/javascript" src="./crypt.js"></script>
+    <!-- <input type="text" placeholder="Type something here to see its length."size="50"> <p id="log"></p> -->
+    <script>
+        // let input = document.querySelector('input');
+        // let log = document.getElementById('log');
+        // input.oninput = handleInput;
+
+        function onChange(e) {
+            console.log(arguments);
+        }
+        function onClick() {
+            $.ajax({
+                type: "post",
+                url:  "https://fpdk.chongqing.chinatax.gov.cn/NSbsqWW/login.do",
+                data: {
+                    type:'CLIENT-HELLO',
+                    clientHello:'3077020103305e310b300906035504061302636e31153013060355040b1e0c56fd5bb67a0e52a1603b5c40311d301b06035504031e147a0e52a175355b508bc14e667ba174064e2d5fc331193017060355040d1e100063006100310030003000300030003202072c0100001e8f6ba209310702010102020402',
+                    alg:'0',
+                    ymbb:'3.1.01'
+                },
+                dataType: "jsonp",
+                contentType: "application/x-www-form-urlencoded;charset=utf-8",
+                jsonp: "callback",
+                success: function (jsonData) {
+                    console.log(jsonData);
+                }
+            });
+        }
+        // var throttle = function (fn, interval) {
+        //     var __self = fn, // 保存需要被延迟执行的函数引用 
+        //         timer, // 定时器
+        //         firstTime = true; // 是否是第一次调用
+        //     return function () {
+        //         var args = arguments,
+        //             __me = this;
+        //         console.log(__me);
+        //         if (firstTime) { // 如果是第一次调用，不需延迟执行 
+        //             __self.apply(__me, args);
+        //             return firstTime = false;
+        //         }
+        //         if (timer) { // 如果定时器还在，说明前一次延迟执行还没有完成 
+        //             return false;
+        //         }
+        //         timer = setTimeout(function () { // 延迟一段时间执行 
+        //             clearTimeout(timer);
+        //             timer = null;
+        //             __self.apply(__me, args);
+        //         }, interval || 500);
+        //     };
+        // };
+        var throttle = function (fn, interval) {
+            var _self = fn;
+            var _interval = interval;
+            var _timer;
+            var firstTime = true;
+            return function () {
+                var args = arguments,
+                    __me = this;
+                if (firstTime) {
+                    //为什么我不直接使用fn()?,因为这个方法会接受参数event事件对象，所以要用apply的方式传递参数
+                    //fn();
+                    _self.apply(this, args);
+                    //_self(...args);
+                    return firstTime = false;
+                }
+                if (_timer) {
+                    return false;
+                }
+                _timer = setTimeout(() => {
+                    clearInterval(_timer);
+                    _timer = null;
+                    _self.apply(null, args);
+                }, _interval || 500);
+            }
+        }
+        window.onresize = throttle(updateDate, 500);
+        function updateDate(e) {
+            console.log(arguments);
+        };
+        var getSingle = function () {
+            var _instance;
+            return {
+                getData: function () {
+                    if (!_instance) {
+                        return _instance = { user: {} };
+                    } else {
+                        return _instance;
+                    }
+                },
+                setData: function (obj) {
+                    this.getData();
+                    _instance = obj;
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

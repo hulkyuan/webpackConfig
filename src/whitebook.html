@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="深圳天宏迅联科技发展有限公司">
+    <title>迅联云应付账款自动化</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body class="wrap index">
+    <!-- 语义化标签：头部 -->
+
+    <!-- 即刻体验 -->
+    <div id="experience" class="experience">
+        <div class="content container">
+            <h2 style=" font-size: 30px;margin-top: 50px;">应付账款自动化白皮书</h2>
+            <div class="form">
+                <form action="">
+                    <input class="col-md-3" type="text" name="name" id="name" placeholder="姓名">
+                    <input class="col-md-3" type="text" name="company" id="company" placeholder="公司">
+                    <input class="col-md-3" type="text" name="email" id="email" placeholder="邮箱">
+                    <input class="col-md-3" type="text" name="phone" id="phone" placeholder="电话">
+                    <input class="applybutton" type="button" id="btn" value="查看白皮书">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="./js/jquery-3.2.1.js"></script>
+    <script type="text/javascript" src="./js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $("#btn").click(function () {
+            var postData = $("form").serialize();
+            if ($('#name').val() == '' || $('#phone').val() == '') {
+                alert('姓名和联系电话是必填');
+                return;
+            }
+            let a = document.createElement('a');
+            a.setAttribute('href', './file/APAutomationWhitepaper.pdf');
+            a.setAttribute('target', '_blank');
+            //a.download = '应付账款自动化白皮书.pdf';
+            a.click();
+            $.ajax({
+                url: host + "/api.php?m=Json&a=putemail",
+                data: postData,
+                type: "POST",
+                dataType: "json",
+                success: function (response) {
+                    alert(response.message);
+                },
+                error: function () {
+
+                }
+            });
+        })
+    </script>
+
+</body>
+
+</html>

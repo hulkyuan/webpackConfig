@@ -1,0 +1,148 @@
+/** 网站框架定义，通用样式 **/
+$page-width: 1190px;
+.content{
+    width: $page-width;
+    margin: 0 auto;
+    overflow: hidden;
+    @media (max-width: 768px) {
+        width: 100vw;
+    }
+}
+
+button{
+    font-size: 16px;
+    background-color: #299df5;
+    border-radius: 6px;
+    color: #fff;
+    border: none;
+}
+.left{
+    float: left;
+}
+.right{
+    float: right;
+}
+
+// 页头，页脚
+.hide{
+    display: none !important;
+}
+.show{
+    display: inline-block !important;
+}
+.navbar-brand{
+    padding: 6px 15px;
+}
+.wrap{
+    background-color: #ffffff;
+    font-family: "Hiragino Sans GB","STHeiti","PingFang","Microsoft Yahei";
+
+    .header{
+        color: #fff;
+        background-color: #393c3e;
+        position: relative;
+        z-index: 9999;
+        .content{
+            height: 60px;
+            overflow: initial;
+            .logo{
+                float: left;
+                margin-top: 10px;
+                height: 30px;
+            }
+            .links{
+                float: right;
+                margin-top: 10px;
+                height: 30px;
+                >li{
+                    line-height: 40px;
+                    float: left;
+                    width: 90px;
+                    text-align: center;
+                    position: relative;
+                    a{
+                        font-size:14px;
+                        color: #fff;
+                        text-decoration: none;
+                    }
+                    .active{
+                        color: #1d8ce2;
+                    }
+                    .childContainer{
+                        background: white;
+                        border-radius: 4px;
+                        position: absolute;
+                        top: 41px;
+                        &:after{
+                            border-left: 6px solid transparent;
+                            border-right: 6px solid transparent;
+                            border-bottom: 6px solid white;
+                            border-top: none;
+                            height: 0;
+                            width: 0;
+                            top: -6px;
+                            content: ' ';
+                            left: 50%;
+                            margin-left: -5px;
+                            position: absolute;
+                        }
+                        ul{
+                            overflow: hidden;
+                            text-align: center;
+                            margin: auto;
+                            padding: 10px 15px;
+                            li{
+                                width: 100%;
+                                font-size: 14px;
+                                a{
+                                   color: #8e8e8e;
+                                   white-space: nowrap;
+                                }
+                                a:hover,a.active{
+                                    color: #1d8ce2;
+                                }
+                            }
+                        }
+                    }
+                    button{
+                        background-color: #299df5;
+                        border-radius: 6px;
+                        color: #fff;
+                        border: none;
+                        width: 50px;
+                        height: 24px;
+                    }
+                }
+            }
+        }
+    }
+
+    .footer{
+        height: 148px;
+        color: #cccccc;
+        background-color: #393c3e;
+        clear: both;
+        font-size: 14px;
+        @media (max-width: 768px) {
+            height: auto;
+        }
+        .left{
+            margin-top: 26px;
+            line-height: 24px;
+        }
+        a{
+            text-decoration: none;
+            color: #cccccc;
+        }
+        .right{
+            text-align: center;
+            @media (max-width: 768px) {
+                display: none;
+            }
+            .code{
+                margin-top: 26px;
+                margin-bottom: 12px;
+            }
+        }
+    }
+}
