@@ -163,8 +163,114 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var _css_style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./css/style.css */ \"./src/css/style.css\");\n/* harmony import */ var _css_style_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_css_style_css__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _footer_html__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./footer.html */ \"./src/footer.html\");\n/* harmony import */ var _footer_html__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_footer_html__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _header_html__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./header.html */ \"./src/header.html\");\n/* harmony import */ var _header_html__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_header_html__WEBPACK_IMPORTED_MODULE_2__);\n\n\n\n\n\n(function () {\n    $('#header').append(_header_html__WEBPACK_IMPORTED_MODULE_2___default.a);\n    $('#footer').append(_footer_html__WEBPACK_IMPORTED_MODULE_1___default.a);\n    var url = 'news';\n    $('#header .links a.dynamic').each(function (index) {\n        if ($(this)[0].pathname.indexOf(url) >= 0) {\n            $(this).addClass('active');\n        }\n    })\n    var host = \"https://news.tsfinance.com.cn\";\n    var all = [];\n    $('.links>li').hover(\n        function () {\n            var target = $(this).find('.childContainer');\n            target.removeClass('hide');\n            var left = $(this).width() - target.width();\n            target.css('left', left / 2);\n            $(this).find('.childContainer').addClass(\"show\");\n        },\n        function () {\n            $(this).find('.childContainer').removeClass('show');\n            $(this).find('.childContainer').addClass(\"hide\");\n        }\n    );\n    getCategory(26);\n    function getCategory(catid) {\n        var catid = catid;\n        $.ajax(host + '/api.php?m=Json&a=getalllist&catid=' + catid, {\n            dataType: \"json\",\n            crossDomain: true,\n            success: function (data) {\n                var list = '';\n                data.sort(function (a, b) {\n                    return b.updatetime - a.updatetime;\n                })\n                for (var i = 0; i < data.length; i++) {\n                    var time = new Date();\n                    time.setTime(data[i].updatetime * 1000);\n\n                    var title = \"\";\n                    var color = \"\";\n                    switch (data[i].catid) {\n                        case '27':\n                            title = \"公司新闻\";\n                            color = \"blue\";\n                            break;\n                        case '28':\n                            title = \"行业观点\";\n                            color = \"orange\";\n                            break;\n                        case '32':\n                            title = \"市场观察\";\n                            color = \"purple\";\n                            break;\n                    }\n                    var date = time.getFullYear() + \"-\" + (time.getMonth() + 1) + \"-\" + time.getDate();\n                    list += '<div class=\"item \">'\n                        + '<div class=\"left col-xs-12 col-md-6\">'\n                        + '<div class=\"cat\">'\n                        + '<div class=\"circle ' + color + '\"></div>'\n                        + title + '</div>'\n                        + '<div class=\"title\">'\n                        + '<a href=\"' + \"./content.html?id=\" + data[i].id + '&catid=' + data[i].catid + '\" target=\"_self\">' + data[i].title + '</a>'\n                        + '</div>'\n                        + '<div class=\"desc\">' + data[i].description + '</div>'\n                        + '<div class=\"more hidden-xs\">'\n                        + '<a href=\"' + \"./content.html?id=\" + data[i].id + '&catid=' + data[i].catid + '\" target=\"_self\">'\n                        + '<img src=\"/images/news/more.png\"/>'\n                        + '</a>'\n                        + '<span class=\"date\">' + date + '</span>'\n                        + '</div>'\n                        + '</div>'\n                        + '<div class=\"right col-xs-12  col-md-6\">'\n                        + '<img src=' + data[i].thumb + ' />'\n                        + '</div>'\n                        + '</div>'\n\n                }\n                $(\".list\").html(list);\n            }\n        });\n    }\n\n})();\n(function (w, d, n, a, j) {\n    w[n] = w[n] || function () {\n        (w[n].a = w[n].a || []).push(arguments);\n    };\n    j = d.createElement('script');\n    j.async = true;\n    j.src = 'https://qiyukf.com/script/61b5bec5f72b78b7a6bc598344c01c63.js';\n    d.body.appendChild(j);\n})(window, document, 'ysf');\n/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\")))\n\n//# sourceURL=webpack:///./src/news.js?");
+__webpack_require__.r(__webpack_exports__);
+/* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var _css_style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./css/style.css */ "./src/css/style.css");
+/* harmony import */ var _css_style_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_css_style_css__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _footer_html__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./footer.html */ "./src/footer.html");
+/* harmony import */ var _footer_html__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_footer_html__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _header_html__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./header.html */ "./src/header.html");
+/* harmony import */ var _header_html__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_header_html__WEBPACK_IMPORTED_MODULE_2__);
+
+
+
+
+
+(function () {
+    $('#header').append(_header_html__WEBPACK_IMPORTED_MODULE_2___default.a);
+    $('#footer').append(_footer_html__WEBPACK_IMPORTED_MODULE_1___default.a);
+    var url = 'news';
+    $('#header .links a.dynamic').each(function (index) {
+        if ($(this)[0].pathname.indexOf(url) >= 0) {
+            $(this).addClass('active');
+        }
+    })
+    var host = "https://news.tsfinance.com.cn";
+    var all = [];
+    $('.links>li').hover(
+        function () {
+            var target = $(this).find('.childContainer');
+            target.removeClass('hide');
+            var left = $(this).width() - target.width();
+            target.css('left', left / 2);
+            $(this).find('.childContainer').addClass("show");
+        },
+        function () {
+            $(this).find('.childContainer').removeClass('show');
+            $(this).find('.childContainer').addClass("hide");
+        }
+    );
+    getCategory(26);
+    function getCategory(catid) {
+        var catid = catid;
+        $.ajax(host + '/api.php?m=Json&a=getalllist&catid=' + catid, {
+            dataType: "json",
+            crossDomain: true,
+            success: function (data) {
+                var list = '';
+                data.sort(function (a, b) {
+                    return b.updatetime - a.updatetime;
+                })
+                for (var i = 0; i < data.length; i++) {
+                    var time = new Date();
+                    time.setTime(data[i].updatetime * 1000);
+
+                    var title = "";
+                    var color = "";
+                    switch (data[i].catid) {
+                        case '27':
+                            title = "公司新闻";
+                            color = "blue";
+                            break;
+                        case '28':
+                            title = "行业观点";
+                            color = "orange";
+                            break;
+                        case '32':
+                            title = "市场观察";
+                            color = "purple";
+                            break;
+                    }
+                    var date = time.getFullYear() + "-" + (time.getMonth() + 1) + "-" + time.getDate();
+                    list += '<div class="item ">'
+                        + '<div class="left col-xs-12 col-md-6">'
+                        + '<div class="cat">'
+                        + '<div class="circle ' + color + '"></div>'
+                        + title + '</div>'
+                        + '<div class="title">'
+                        + '<a href="' + "./content.html?id=" + data[i].id + '&catid=' + data[i].catid + '" target="_self">' + data[i].title + '</a>'
+                        + '</div>'
+                        + '<div class="desc">' + data[i].description + '</div>'
+                        + '<div class="more hidden-xs">'
+                        + '<a href="' + "./content.html?id=" + data[i].id + '&catid=' + data[i].catid + '" target="_self">'
+                        + '<img src="/images/news/more.png"/>'
+                        + '</a>'
+                        + '<span class="date">' + date + '</span>'
+                        + '</div>'
+                        + '</div>'
+                        + '<div class="right col-xs-12  col-md-6">'
+                        + '<img src=' + data[i].thumb + ' />'
+                        + '</div>'
+                        + '</div>'
+
+                }
+                $(".list").html(list);
+            }
+        });
+    }
+
+})();
+(function (w, d, n, a, j) {
+    w[n] = w[n] || function () {
+        (w[n].a = w[n].a || []).push(arguments);
+    };
+    j = d.createElement('script');
+    j.async = true;
+    j.src = 'https://qiyukf.com/script/61b5bec5f72b78b7a6bc598344c01c63.js';
+    d.body.appendChild(j);
+})(window, document, 'ysf');
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js")))
 
 /***/ })
 
 /******/ });
+//# sourceMappingURL=news.bundle.js.map

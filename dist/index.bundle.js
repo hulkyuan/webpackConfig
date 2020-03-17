@@ -163,8 +163,82 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var _css_style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./css/style.css */ \"./src/css/style.css\");\n/* harmony import */ var _css_style_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_css_style_css__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _footer_html__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./footer.html */ \"./src/footer.html\");\n/* harmony import */ var _footer_html__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_footer_html__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _header_html__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./header.html */ \"./src/header.html\");\n/* harmony import */ var _header_html__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_header_html__WEBPACK_IMPORTED_MODULE_2__);\n\n\n\n\n\n(function () {\n    $('#header').append(_header_html__WEBPACK_IMPORTED_MODULE_2___default.a);\n    $('#footer').append(_footer_html__WEBPACK_IMPORTED_MODULE_1___default.a);\n    var url = 'index';\n    $('#header .links a.dynamic').each(function (index) {\n        if($(this)[0].pathname.indexOf(url)>=0){\n            $(this).addClass('active');\n        }\n    })\n    var host = \"https://news.tsfinance.com.cn\";\n    $('.links>li').hover(\n        function () {\n            var target = $(this).find('.childContainer');\n            target.removeClass('hide');\n            var left = $(this).width() - target.width();\n            target.css('left', left / 2);\n            $(this).find('.childContainer').addClass(\"show\");\n        },\n        function () {\n            $(this).find('.childContainer').removeClass('show');\n            $(this).find('.childContainer').addClass(\"hide\");\n        }\n    );\n    $(\"#btn\").click(function () {\n        var postData = $(\"form\").serialize();\n        if ($('#name').val() == '' || $('#phone').val() == '') {\n            alert('姓名和联系电话是必填');\n            return;\n        }\n        let a = document.createElement('a');\n        a.setAttribute('href', './file/APAutomationWhitepaper.pdf');\n        a.setAttribute('target', '_blank');\n        //a.download = '应付账款自动化白皮书.pdf';\n        a.click();\n        $.ajax({\n            url: host + \"/api.php?m=Json&a=putemail\",\n            data: postData,\n            type: \"POST\",\n            dataType: \"json\",\n            success: function (response) {\n                alert(response.message);\n            },\n            error: function () {\n\n            }\n        });\n    })\n    $('.banner').on('click', function () {\n        $(\"html,body\").animate({ scrollTop: $(\"#experience\").offset().top }, 500);\n    });\n\n})();\n(function (w, d, n, a, j) {\n    w[n] = w[n] || function () {\n        (w[n].a = w[n].a || []).push(arguments);\n    };\n    j = d.createElement('script');\n    j.async = true;\n    j.src = 'https://qiyukf.com/script/61b5bec5f72b78b7a6bc598344c01c63.js';\n    d.body.appendChild(j);\n})(window, document, 'ysf');\n/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\")))\n\n//# sourceURL=webpack:///./src/index.js?");
+__webpack_require__.r(__webpack_exports__);
+/* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var _css_style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./css/style.css */ "./src/css/style.css");
+/* harmony import */ var _css_style_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_css_style_css__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _footer_html__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./footer.html */ "./src/footer.html");
+/* harmony import */ var _footer_html__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_footer_html__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _header_html__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./header.html */ "./src/header.html");
+/* harmony import */ var _header_html__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_header_html__WEBPACK_IMPORTED_MODULE_2__);
+
+
+
+
+
+(function () {
+    $('#header').append(_header_html__WEBPACK_IMPORTED_MODULE_2___default.a);
+    $('#footer').append(_footer_html__WEBPACK_IMPORTED_MODULE_1___default.a);
+    var url = 'index';
+    $('#header .links a.dynamic').each(function (index) {
+        if($(this)[0].pathname.indexOf(url)>=0){
+            $(this).addClass('active');
+        }
+    })
+    var host = "https://news.tsfinance.com.cn";
+    $('.links>li').hover(
+        function () {
+            var target = $(this).find('.childContainer');
+            target.removeClass('hide');
+            var left = $(this).width() - target.width();
+            target.css('left', left / 2);
+            $(this).find('.childContainer').addClass("show");
+        },
+        function () {
+            $(this).find('.childContainer').removeClass('show');
+            $(this).find('.childContainer').addClass("hide");
+        }
+    );
+    $("#btn").click(function () {
+        var postData = $("form").serialize();
+        if ($('#name').val() == '' || $('#phone').val() == '') {
+            alert('姓名和联系电话是必填');
+            return;
+        }
+        let a = document.createElement('a');
+        a.setAttribute('href', './file/APAutomationWhitepaper.pdf');
+        a.setAttribute('target', '_blank');
+        //a.download = '应付账款自动化白皮书.pdf';
+        a.click();
+        $.ajax({
+            url: host + "/api.php?m=Json&a=putemail",
+            data: postData,
+            type: "POST",
+            dataType: "json",
+            success: function (response) {
+                alert(response.message);
+            },
+            error: function () {
+
+            }
+        });
+    })
+    $('.banner').on('click', function () {
+        $("html,body").animate({ scrollTop: $("#experience").offset().top }, 500);
+    });
+
+})();
+(function (w, d, n, a, j) {
+    w[n] = w[n] || function () {
+        (w[n].a = w[n].a || []).push(arguments);
+    };
+    j = d.createElement('script');
+    j.async = true;
+    j.src = 'https://qiyukf.com/script/61b5bec5f72b78b7a6bc598344c01c63.js';
+    d.body.appendChild(j);
+})(window, document, 'ysf');
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js")))
 
 /***/ })
 
 /******/ });
+//# sourceMappingURL=index.bundle.js.map

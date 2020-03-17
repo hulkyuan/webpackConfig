@@ -13,7 +13,7 @@ module.exports = function (env, argv) {
       filename: '[name].bundle.js',
       path: path.resolve(__dirname, 'dist')
     },
-    devtool: env.production ? 'source-maps' : 'eval',
+    devtool: env.production ? 'eval' : 'source-maps',
     mode: env.production ? 'production' : 'development',
     module: {
       rules: [
