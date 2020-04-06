@@ -9,7 +9,6 @@
   "devDependencies": {
     "bootstrap": "^3.4.1",
     "clean-webpack-plugin": "^3.0.0",
-    "common-config-webpack-plugin": "^1.4.0",
     "css-loader": "^3.2.0",
     "extract-loader": "^5.0.1",
     "file-loader": "^4.2.0",
